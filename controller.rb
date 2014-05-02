@@ -9,4 +9,44 @@
   access the pertinent information from the database (story)
     put it together and display to user
   return to main menu
+=end
+
+require_relative 'view'
+require_relative 'model'
+
+class Tweetlibs
+  attr_accessor :genre
+
+  def initialize(view, model)
+    @view = view
+    @model = model
+  end
+
+  def menu
+    selection = @view.menu
+    case selection.to_i
+    when 1
+      start_game
+    when 2
+      return
+    else 
+      menu
+    end
+  end
+
+  def start_game
+    select_genre
+    select_tweets
+  end
+
+  def select_genre
+    @genre = @view.select_genre
+  end
+
+  def select_tweets
+    tweets = @model.select_tweets
+    @view.select_tweets(tweets)
+  end
+
+
 end

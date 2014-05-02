@@ -20,6 +20,8 @@ class TweetLibs
   def initialize(view, model)
     @view = view
     @model = model
+    @user_1_tweets
+    @user_2_tweets
   end
 
   def menu
@@ -44,8 +46,24 @@ class TweetLibs
   end
 
   def select_tweets
-    tweets = @model.select_tweets
-    @view.select_tweets(tweets)
+    populate_tweet_arrays
+    call_view_tweets(@user_1_tweets)
+    call_view_tweets(@user_2_tweets) 
+  end
+
+  def call_view_tweets(tweet_array)
+    final_array = []
+    until tweet_array.length == 3
+      selection_array = tweet_array.shift(3)
+      selection = @view.select_tweets(selection_array)
+      final_array << selection_array[selection]
+    end
+    tweet_array = final_array
+  end
+
+  def populate_tweet_arrays
+    @user_1_tweets = @model.select_tweets(1)
+    @user_2_tweets = @model.select_tweets(2)
   end
 
 

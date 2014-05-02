@@ -13,7 +13,8 @@ class View
     gets.chomp
   end
 
-  def select_tweets
+  def select_tweets(tweets)
+    puts "Please select a tweet"
     #display 3 tweets and take a selection
   end
 

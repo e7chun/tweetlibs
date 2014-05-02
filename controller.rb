@@ -14,7 +14,7 @@
 require_relative 'view'
 require_relative 'model'
 
-class Tweetlibs
+class TweetLibs
   attr_accessor :genre
 
   def initialize(view, model)

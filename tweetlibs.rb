@@ -8,7 +8,7 @@
 require_relative 'tests'
 require_relative 'controller'
 
-game = Tweetlibs.New(View.new, Model.new)
+game = TweetLibs.New(View.new, Model.new)
 game.menu
 
 

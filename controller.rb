@@ -47,16 +47,18 @@ class TweetLibs
   end
 
   def select_tweets
-    until @user_1_tweets == 3
+    until @user_1_tweets.length == 3
       make_tweet_selections
     end
+    p @user_2_tweets
+    p @user_1_tweets
   end
 
   def make_tweet_selections
     tweet_sample_1 = @model.sample_tweets_user_1
     tweet_sample_2 = @model.sample_tweets_user_2
-    @user_1_tweets << @view.select_tweets(tweet_sample_1)
-    @user_2_tweets << @view.select_tweets(tweet_sample_2)
+    @user_1_tweets << tweet_sample_1[@view.select_tweets(tweet_sample_1)]
+    @user_2_tweets << tweet_sample_2[@view.select_tweets(tweet_sample_2)]
   end
 
   def display_story

@@ -21,4 +21,9 @@ class View
     gets.chomp.to_i
   end
 
+  def display_story(story)
+    puts story
+    puts "\nPress enter to continue"
+    gets.chomp
+  end
 end

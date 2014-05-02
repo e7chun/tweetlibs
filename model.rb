@@ -38,18 +38,20 @@ class Model
   end
 
   def sample_tweets_user_1
-    select_tweets
     @user_1_tweets.pop(3)
   end
 
   def sample_tweets_user_2
-    select_tweets
     @user_2_tweets.pop(3)
   end
 
   def select_tweets
     @user_1_tweets = get_tweets('katyperry',9)
     @user_2_tweets = get_tweets('kanyewest',9)
+  end
+
+  def build_story(user_1_tweets, user_2_tweets)
+
   end
 
 

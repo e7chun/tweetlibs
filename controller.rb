@@ -20,8 +20,8 @@ class TweetLibs
   def initialize(view, model)
     @view = view
     @model = model
-    @user_1_tweets
-    @user_2_tweets
+    @user_1_tweets = []
+    @user_2_tweets = []
   end
 
   def menu
@@ -39,6 +39,7 @@ class TweetLibs
   def start_game
     select_genre
     select_tweets
+    display_story
   end
 
   def select_genre
@@ -46,24 +47,20 @@ class TweetLibs
   end
 
   def select_tweets
-    populate_tweet_arrays
-    call_view_tweets(@user_1_tweets)
-    call_view_tweets(@user_2_tweets) 
-  end
-
-  def call_view_tweets(tweet_array)
-    final_array = []
-    until tweet_array.length == 3
-      selection_array = tweet_array.shift(3)
-      selection = @view.select_tweets(selection_array)
-      final_array << selection_array[selection]
+    until @user_1_tweets == 3
+      make_tweet_selections
     end
-    tweet_array = final_array
   end
 
-  def populate_tweet_arrays
-    @user_1_tweets = @model.select_tweets(1)
-    @user_2_tweets = @model.select_tweets(2)
+  def make_tweet_selections
+    tweet_sample_1 = @model.sample_tweets_user_1
+    tweet_sample_2 = @model.sample_tweets_user_2
+    @user_1_tweets << @view.select_tweets(tweet_sample_1)
+    @user_2_tweets << @view.select_tweets(tweet_sample_2)
+  end
+
+  def display_story
+    @model.build_story
   end
 
 

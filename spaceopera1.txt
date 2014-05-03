@@ -3,8 +3,8 @@ Science Fiction\n
 
   The magnatronic thrusters coughed and the space freighter jerked.
 
-"Dammit!" Captain Drakaru said. \"#{user_1_tweets[0]}.\" He scratched at the dark bristles around the horns on 
-either side of his chin. "I can't believe \"#{user_1_tweets[1]}.\" The door glided open, hissing to its stops before sliding closed 
+"Dammit!" Captain Drakaru said. <%= user_1_tweets[0] %>. He scratched at the dark bristles around the horns on 
+either side of his chin. "I can't believe #{user_1_tweets[1]}. The door glided open, hissing to its stops before sliding closed 
 again.
 
   \"#{user_2_tweets[0]},\" said Wegs Rylar. Drakaru's second in command

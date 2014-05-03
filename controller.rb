@@ -62,7 +62,7 @@ class TweetLibs
 
   def display_story
     story = @model.build_story(@user_1_tweets, @user_2_tweets)
-    @view.display_story(story)
+    @view.display_story(story, @user_1_tweets, @user_2_tweets)
     menu
   end
 

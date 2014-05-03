@@ -7,7 +7,7 @@ require 'time'
 DATABASE_NAME = 'tweetlibs-database'
 $tweetlibs_database = SQLite3::Database.new "#{DATABASE_NAME}.db"
 
-class Name_me_later
+class Storybook
   attr_reader :title, :genre, :story
   def initialize
     @title = ''
@@ -15,15 +15,16 @@ class Name_me_later
     @story = ''
   end
 
-  def read_in_story_file(file_name) #file_path should be a string
-    file = File.new(file_name)
-      story_array = file.readlines('\n')
-      @title = story_array[0]
-      @genre = story_array[1]
-      @story = story_array[2]
+  def read_in_story_file(file_path) #file_path should be a string
+    file = File.new(file_path)
+    story_array = file.readlines('\n')
+    @title = story_array[0]
+    @genre = story_array[1]
+    @story = story_array[2]
   end
 
   def create_db_table
+    $tweetlibs_database.execute("DROP TABLE IF EXISTS story_templates;")
     $tweetlibs_database.execute(<<-SQL
       CREATE TABLE story_templates (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -37,11 +38,6 @@ class Name_me_later
     )
   end
 
-# # Execute inserts with parameter markers
-# db.execute("INSERT INTO students (name, email, grade, blog) 
-#             VALUES (?, ?, ?, ?)", [@name, @email, @grade, @blog])
-
-
   def add_storys_to_table
     $tweetlibs_database.execute(
       "INSERT into story_templates (title, genre, story) 
@@ -49,16 +45,19 @@ class Name_me_later
     )
   end
 
+  def return_story
+    $tweetlibs_database.execute(
+      "SELECT story FROM story_templates;")
+  end
+
 end
 
-test = Name_me_later.new
-test.read_in_story_file('spaceopera1.txt')
-test.create_db_table
-test.add_storys_to_table
+#test = Storybook.new
+# test.read_in_story_file('spaceopera1.txt')
+# test.create_db_table
+# test.add_storys_to_table
 
-p test.title
-p test.genre
-p test.story
+
 
 
 

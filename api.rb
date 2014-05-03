@@ -3,11 +3,11 @@ require 'twitter'
 @client = Twitter::REST::Client.new do |config|
   config.consumer_key        = "V9fa9p8YxOPtjE9YTcxjYztlr"
   config.consumer_secret     = "g9Ee6hJe094DowCyD4Oyecui39a6Nynt31uzKDXK4uOgl9vFML"
-  config.access_token        = "[Your Token Here]"
-  config.access_token_secret = "[Your Token Secret Here]"
+  config.access_token        = "171597575-KikuQ7884uFrBP9GLmh8ejrdDEfnGsTA9aOlJvQb"
+  config.access_token_secret = "kLccAab1THvQPHVIH2lzhOUPv7XfQTHnEqtQVirQlt1s7"
 end
 
-
+p @client.class
 
 
 def get_tweets(twittername, num_of_tweets)
@@ -26,4 +26,4 @@ def get_tweets(twittername, num_of_tweets)
   strings
 end
 
-p get_tweets('katyperry',8)
+#p get_tweets('katyperry',9)

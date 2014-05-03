@@ -50,8 +50,8 @@ class Model
     @user_2_tweets = get_tweets('kanyewest',9)
   end
 
-  def build_story(user_1_tweets, user_2_tweets)
-
+  def build_story
+    #send the story from the model in string format
   end
 
 

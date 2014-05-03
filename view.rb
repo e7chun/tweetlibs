@@ -21,7 +21,7 @@ class View
     gets.chomp.to_i
   end
 
-  def display_story(story)
+  def display_story(story, user_tweets_1, user_tweets_2)
     puts story
     puts "\nPress enter to continue"
     gets.chomp

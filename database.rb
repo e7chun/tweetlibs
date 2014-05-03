@@ -1,10 +1,14 @@
 require 'sqlite3'
 require 'debugger'
+require 'time'
+
+#updated at not functioning yet
 
 DATABASE_NAME = 'tweetlibs-database'
 $tweetlibs_database = SQLite3::Database.new "#{DATABASE_NAME}.db"
 
 class Name_me_later
+  attr_reader :title, :genre, :story
   def initialize
     @title = ''
     @genre = ''
@@ -31,13 +35,17 @@ class Name_me_later
       );  
       SQL
     )
-
   end
+
+# # Execute inserts with parameter markers
+# db.execute("INSERT INTO students (name, email, grade, blog) 
+#             VALUES (?, ?, ?, ?)", [@name, @email, @grade, @blog])
+
 
   def add_storys_to_table
     $tweetlibs_database.execute(
-      " INSERT into story_templates (title, genre, story, updated_at) 
-      VALUES (' #{@title} ', ' #{@genre} ', ' #{@story} ', ' #{Time.now} ' ;) "
+      "INSERT into story_templates (title, genre, story) 
+      VALUES (?, ?, ?);", [@title, @genre, @story]
     )
   end
 
@@ -47,5 +55,10 @@ test = Name_me_later.new
 test.read_in_story_file('spaceopera1.txt')
 test.create_db_table
 test.add_storys_to_table
+
+p test.title
+p test.genre
+p test.story
+
 
 
